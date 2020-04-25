@@ -1,0 +1,36 @@
+{
+    "name": "rhythm-roulette",
+    "version": "1.0.0",
+    "description": "A rhythm-roulette web app.",
+    "main": "app/index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon app/index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MeanBoyCousin/rhythm-roulette.git"
+    },
+    "keywords": [
+        "rhythm",
+        "roulette",
+        "music",
+        "discogs",
+        "node"
+    ],
+    "author": "Tim Dunphy",
+    "license": "GPL-3.0",
+    "bugs": {
+        "url": "https://github.com/MeanBoyCousin/rhythm-roulette/issues"
+    },
+    "homepage": "https://github.com/MeanBoyCousin/rhythm-roulette#readme",
+    "dependencies": {
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "sqlite": "^4.0.7",
+        "sqlite3": "^4.1.1"
+    },
+    "devDependencies": {
+        "express-prettify": "^0.1.1"
+    }
+}
