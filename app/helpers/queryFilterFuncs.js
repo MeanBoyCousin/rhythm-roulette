@@ -44,9 +44,8 @@ const filterInclusiveStyles = (data, incStyles) => {
 }
 
 const removeExcludedStyles = (data, excStyles, excUndefStyles) => {
-    if (excUndefStyles !== undefined && excStyles !== undefined) excStyles.push(excUndefStyles)
-    if (excUndefStyles !== undefined && excStyles === undefined) excStyles = [excUndefStyles]
-    console.log(excStyles)
+    if (excUndefStyles === 'true' && excStyles !== undefined) excStyles.push('undefined')
+    if (excUndefStyles === 'true' && excStyles === undefined) excStyles = ['undefined']
     if (excStyles === undefined) {
         return data
     } else {
