@@ -1,11 +1,13 @@
 const express = require('express')
 require('dotenv').config()
 const pretty = require('express-prettify')
+const cors = require('cors')
 
 const app = express()
 app.use(pretty({
     query: 'pretty'
 }));
+app.use(cors())
 
 const home = require('./routes/home')
 const api = require('./routes/api')

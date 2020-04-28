@@ -1,9 +1,7 @@
-const filterYearRange = (args) => {
-    const {
-        data,
-        params
-    } = args
-
+const filterYearRange = ({
+    data,
+    params
+}) => {
     return {
         data: data.filter(release => {
             if (params.lowerYear === undefined) {
@@ -18,12 +16,10 @@ const filterYearRange = (args) => {
     }
 }
 
-const filterInclusiveGenres = (args) => {
-    const {
-        data,
-        params
-    } = args
-
+const filterInclusiveGenres = ({
+    data,
+    params
+}) => {
     if (params.incGenres === undefined) {
         return {
             data: data,
@@ -40,12 +36,10 @@ const filterInclusiveGenres = (args) => {
     }
 }
 
-const removeExcludedGenres = (args) => {
-    const {
-        data,
-        params
-    } = args
-
+const removeExcludedGenres = ({
+    data,
+    params
+}) => {
     if (params.excGenres === undefined) {
         return {
             data: data,
@@ -62,12 +56,10 @@ const removeExcludedGenres = (args) => {
     }
 }
 
-const filterInclusiveStyles = (args) => {
-    const {
-        data,
-        params
-    } = args
-
+const filterInclusiveStyles = ({
+    data,
+    params
+}) => {
     if (params.incStyles === undefined) {
         return {
             data: data,
@@ -84,12 +76,10 @@ const filterInclusiveStyles = (args) => {
     }
 }
 
-const removeExcludedStyles = (args) => {
-    const {
-        data,
-        params
-    } = args
-
+const removeExcludedStyles = ({
+    data,
+    params
+}) => {
     if (params.excUndefStyles === 'true' && params.excStyles !== undefined) params.excStyles.push('undefined')
     if (params.excUndefStyles === 'true' && params.excStyles === undefined) params.excStyles = ['undefined']
     if (params.excStyles === undefined) {
