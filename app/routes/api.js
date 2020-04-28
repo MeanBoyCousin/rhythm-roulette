@@ -20,8 +20,6 @@ router.get('/', async (req, res) => {
         mode: req.query.m
     }
 
-    console.log(options)
-
     res.json(send(data, options))
 
 })

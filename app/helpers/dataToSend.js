@@ -1,16 +1,22 @@
 const queryFilters = require('./queryFilterFuncs')
+const R = require('ramda')
 
 const dataToSend = (data, params) => {
 
-    data = queryFilters.years(data, params.lowerYear, params.upperYear)
+    const args = {
+        data: data,
+        params: params
+    }
 
-    data = queryFilters.incGenres(data, params.incGenres)
+    const filterData = R.pipe(
+        queryFilters.years,
+        queryFilters.incGenres,
+        queryFilters.excGenres,
+        queryFilters.incStyles,
+        queryFilters.excStyles
+    )
 
-    data = queryFilters.excGenres(data, params.excGenres)
-
-    data = queryFilters.incStyles(data, params.incStyles)
-
-    data = queryFilters.excStyles(data, params.excStyles, params.excUndefStyles)
+    data = filterData(args).data
 
     let results = [];
 
