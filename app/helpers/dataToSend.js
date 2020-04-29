@@ -12,7 +12,6 @@ const dataToSend = (data, params) => {
         queryFilters.years,
         queryFilters.incGenres,
         queryFilters.excGenres,
-        queryFilters.incStyles,
         queryFilters.excStyles
     )
 

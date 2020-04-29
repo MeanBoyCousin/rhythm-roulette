@@ -56,26 +56,6 @@ const removeExcludedGenres = ({
     }
 }
 
-const filterInclusiveStyles = ({
-    data,
-    params
-}) => {
-    if (params.incStyles === undefined) {
-        return {
-            data: data,
-            params: params
-        }
-    } else {
-        return {
-            data: data.filter(release => {
-                const matcherMap = params.incStyles.map(style => release.styles.toLowerCase().includes(style))
-                return matcherMap.some(bool => bool === true)
-            }),
-            params: params
-        }
-    }
-}
-
 const removeExcludedStyles = ({
     data,
     params
@@ -102,6 +82,5 @@ module.exports = {
     years: filterYearRange,
     incGenres: filterInclusiveGenres,
     excGenres: removeExcludedGenres,
-    incStyles: filterInclusiveStyles,
     excStyles: removeExcludedStyles
 }
