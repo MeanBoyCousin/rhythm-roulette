@@ -16,7 +16,8 @@ router.get('/', async (req, res) => {
         excGenres: (req.query.eg !== 'none' && req.query.eg !== undefined) ? req.query.eg.split(',') : undefined,
         excStyles: (req.query.es !== 'none' && req.query.es !== undefined) ? req.query.es.split(',') : undefined,
         excUndefStyles: req.query.eus,
-        mode: req.query.m
+        mode: req.query.m,
+        videos: req.query.v
     }
 
     res.json(send(data, options))

@@ -78,9 +78,29 @@ const removeExcludedStyles = ({
     }
 }
 
+const amountOfVideos = ({
+    data,
+    params
+}) => {
+    if (params.videos === undefined) {
+        return {
+            data: data,
+            params: params
+        }
+    } else {
+        return {
+            data: data.filter(release => {
+                return release.videos.length >= params.videos
+            }),
+            params: params
+        }
+    }
+}
+
 module.exports = {
     years: filterYearRange,
     incGenres: filterInclusiveGenres,
     excGenres: removeExcludedGenres,
-    excStyles: removeExcludedStyles
+    excStyles: removeExcludedStyles,
+    videos: amountOfVideos
 }
