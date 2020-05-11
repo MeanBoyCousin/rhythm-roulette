@@ -11,9 +11,11 @@ app.use(cors())
 
 const home = require('./routes/home')
 const api = require('./routes/api')
+const user = require('./routes/user')
 
 app.use('/', home)
 app.use('/api', api)
+app.use('/user', user) // Used to search a saved set of release IDs against the releases DB to return all info.
 
 app.get('*', (req, res) => {
     res.send('404')

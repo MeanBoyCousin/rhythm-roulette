@@ -1,6 +1,6 @@
 const database = require('../helpers/databaseAccess')
 
-const getAllData = async () => {
+const fetchAllData = async () => {
 
     const db = await database.open(process.env.DB_PATH)
 
@@ -15,4 +15,6 @@ const getAllData = async () => {
     return data
 }
 
-module.exports = getAllData
+module.exports = fetchAllData().then(data => () => {
+    return data
+})

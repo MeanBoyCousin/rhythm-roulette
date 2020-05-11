@@ -3,11 +3,9 @@ const router = express.Router()
 const fetchAllData = require('../helpers/fetchAllData')
 const send = require('../helpers/dataToSend')
 
-let data;
-
-fetchAllData().then(val => data = val)
-
 router.get('/', async (req, res) => {
+
+    const data = await fetchAllData
 
     const options = {
         lowerYear: (req.query.l !== '' && req.query.l !== undefined) ?
@@ -25,7 +23,7 @@ router.get('/', async (req, res) => {
         videos: req.query.v
     }
 
-    res.json(send(data, options))
+    res.json(send(data(), options))
 
 })
 
