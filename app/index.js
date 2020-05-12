@@ -10,12 +10,12 @@ app.use(pretty({
 app.use(cors())
 
 const home = require('./routes/home')
-const api = require('./routes/api')
-const user = require('./routes/user')
+const api = require('./routes/spin')
+const saveSpin = require('./routes/saveSpin') // Put request to update saved spins.
+const savedSpins = require('./routes/getSavedSpins') // Used to search saved spins against the releases DB to return all info.
 
 app.use('/', home)
-app.use('/api', api)
-app.use('/user', user) // Used to search a saved set of release IDs against the releases DB to return all info.
+app.use('/api', [api, saveSpin, savedSpins])
 
 app.get('*', (req, res) => {
     res.send('404')

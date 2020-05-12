@@ -3,7 +3,7 @@ const router = express.Router()
 const fetchAllData = require('../helpers/fetchAllData')
 const send = require('../helpers/dataToSend')
 
-router.get('/', async (req, res) => {
+router.get('/spin', async (req, res) => {
 
     const data = await fetchAllData
 
