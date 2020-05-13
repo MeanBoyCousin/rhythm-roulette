@@ -6,28 +6,32 @@ const fetchAllData = require('../helpers/fetchAllData')
 
 const getReleases = (releases, ids) => {
     return releases.reduce((acc, curr) => {
-        if (ids.indexOf(curr.id) !== -1) acc.push(curr)
+        if (ids.indexOf(curr.id) !== -1) acc.push({
+            artists: curr.artists,
+            title: curr.title,
+            genre: curr.genres
+        })
         return acc
     }, [])
 }
 
-router.get('/savedspins', async (req, res) => {
+router.get('/uploaded', async (req, res) => {
 
     try {
 
         const db = await database.open(process.env.DB_PATH)
 
-        let savedSpins = await db.get(`SELECT saved FROM users WHERE user_id = '${currentUser}';`).then(spins => JSON.parse(spins.saved))
+        let uploadedSongs = await db.get(`SELECT uploaded FROM users WHERE user_id = '${currentUser}';`).then(songs => JSON.parse(songs.uploaded))
 
         await database.close(db)
 
         const data = await fetchAllData
 
-        savedSpins.forEach(spin => {
-            spin.ids = getReleases(data(), spin.ids)
+        uploadedSongs.forEach(song => {
+            song.spinData = getReleases(data(), song.spinData)
         })
 
-        res.json(savedSpins)
+        res.json(uploadedSongs)
 
     } catch (error) {
 

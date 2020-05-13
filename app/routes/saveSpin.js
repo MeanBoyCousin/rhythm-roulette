@@ -4,29 +4,51 @@ const mode = require('../helpers/modeIntToString')
 const database = require('../helpers/databaseAccess')
 const currentUser = require('../helpers/currentUser')
 
-router.put('/savespin', async (req, res) => {
+router.get('/savespin', async (req, res) => { // Should be PUT request.
 
-    const db = await database.open(process.env.DB_PATH)
+    try {
 
-    const savedSpins = await db.get(`SELECT saved FROM users WHERE user_id = '${currentUser}';`)
+        const db = await database.open(process.env.DB_PATH)
 
-    let savedSpinsArray = JSON.parse(savedSpins.saved)
+        const savedSpins = await db.get(`SELECT saved FROM users WHERE user_id = '${currentUser}';`)
 
-    savedSpinsArray = [] // Temp measure to empty array each time to stop massive overflow. Needs updating to only allow max 5 saved spins.
+        let savedSpinsArray = JSON.parse(savedSpins.saved)
 
-    savedSpinsArray.push({
-        date: Date.now(),
-        mode: mode(req),
-        ids: req.query.ids.split(',')
-    })
+        if (savedSpinsArray.length < 5) {
 
-    await db.run(`UPDATE users SET saved = '${JSON.stringify(savedSpinsArray)}' WHERE user_id = '${currentUser}';`)
+            savedSpinsArray.push({
+                date: Date.now(),
+                mode: mode(req),
+                ids: req.query.ids.split(',').map(parseFloat) // IDs should come from the body of the PUT request.
+            })
 
-    database.close(db)
+            await db.run(`UPDATE users SET saved = '${JSON.stringify(savedSpinsArray)}' WHERE user_id = '${currentUser}';`)
 
-    res.json({
-        message: "Spin saved!"
-    })
+            await database.close(db)
+
+            res.json({
+                message: "Spin saved!"
+            })
+
+        } else {
+
+            await database.close(db)
+
+            res.json({
+                message: "You may only save 5 spins at a time, please delete one and try again!"
+            })
+
+        }
+
+    } catch (error) {
+
+        res.json({
+            message: "Unable to upload, an error occurred!"
+        })
+
+        console.log(error)
+
+    }
 
 })
 
