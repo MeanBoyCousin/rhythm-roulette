@@ -3,13 +3,7 @@ const router = express.Router()
 const database = require('../helpers/databaseAccess')
 const currentUser = require('../helpers/currentUser')
 const fetchAllData = require('../helpers/fetchAllData')
-
-const getReleases = (releases, ids) => {
-    return releases.reduce((acc, curr) => {
-        if (ids.indexOf(curr.id) !== -1) acc.push(curr)
-        return acc
-    }, [])
-}
+const getReleases = require('../helpers/getReleasesFromIDs')
 
 router.get('/savedspins', async (req, res) => {
 

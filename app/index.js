@@ -11,6 +11,7 @@ app.use(cors()) // Do I need this?
 
 const home = require('./routes/home')
 const spin = require('./routes/spin')
+const previousSpin = require('./routes/getPreviousSpin') // Used to fetch a previous spin when release IDs are known.
 const saveSpin = require('./routes/saveSpin') // Put request to update saved spins.
 const savedSpins = require('./routes/getSavedSpins') // Used to fetch users saved spins.
 const deleteSpin = require('./routes/deleteSpin') // Used to delete a saved or uploaded spin.
@@ -18,7 +19,7 @@ const upload = require('./routes/upload') // Used to upload a track made from a 
 const uploaded = require('./routes/getUploaded') // Used to fetch users uploaded songs.
 
 app.use('/', home)
-app.use('/api', spin)
+app.use('/api', [spin, previousSpin])
 app.use('/api/save', [saveSpin, savedSpins])
 app.use('/api/upload', [upload, uploaded])
 app.use('/api/delete', deleteSpin)

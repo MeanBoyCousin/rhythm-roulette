@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #247857;
+}
+
+#container {
+    width: 85%;
+    min-height: 100vh;
+    background-color: white;
+    padding: 0 2.5%;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+h1 {
+    font-family: 'lato', Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.track-container {
+    margin-bottom: 7.5%;
+    position: relative;
+}
+
+p {
+    margin: 0;
+}
+
+.delete-track {
+    position: absolute;
+    right: 0;
+}
+
+.top-info {
+    display: flex;
+    align-items: center;
+    padding-bottom: 2.5%;
+}
+
+.date,
+.mode,
+.releases {
+    font-family: 'Inconsolata', monospace;
+}
+
+.mode-img-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.25%;
+}
+
+.view-spin-btn {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    font-family: 'Inconsolata', monospace;
+    background-color: #cf204b;
+    color: white;
+    border-radius: 3px;
+    padding: 0.25rem 1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 100ms cubic-bezier(.4, 0, 1, 1);
+    user-select: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.view-spin-btn:active {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    background-color: #970024;
+}
+
+.mode-img {
+    height: 1.5rem;
+}
+
+hr {
+    margin: 0;
+    margin-top: 7.5%;
+    border: none;
+    height: 0.5px;
+    background-image: radial-gradient(#247857, white 25%)
+}

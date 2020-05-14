@@ -1,20 +1,18 @@
 const express = require('express')
 const router = express.Router()
+const bodyParser = require('body-parser')
 const database = require('../helpers/databaseAccess')
 const currentUser = require('../helpers/currentUser')
 
-router.get('/', async (req, res) => { // Should be DELETE request.
+router.delete('/', bodyParser.json(), async (req, res) => {
 
     try {
 
-        // IMPORTANT
-        // Unix data should be attached to the delete button element within the 'data-date' attribute.
-
-        const spinToDelete = parseFloat(req.query.unix) // Unix should come from the body of the DELETE request.
+        const spinToDelete = req.body.date
 
         const db = await database.open(process.env.DB_PATH)
 
-        const type = req.query.type // Type should come from the body of the DELETE request.
+        const type = req.body.type
 
         const spins = await db.get(`SELECT ${type} FROM users WHERE user_id = '${currentUser}';`)
 
