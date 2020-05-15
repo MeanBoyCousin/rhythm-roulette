@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'Lato';
+    src: local('Lato Regular'), local('Lato-Regular'),
+        url('Lato-Regular.woff2') format('woff2'),
+        url('Lato-Regular.woff') format('woff'),
+        url('Lato-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: local('Inconsolata Regular'), local('Inconsolata-Regular'),
+        url('Inconsolata-Regular.woff2') format('woff2'),
+        url('Inconsolata-Regular.woff') format('woff'),
+        url('Inconsolata-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
