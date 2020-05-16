@@ -24,5 +24,6 @@ deleteCancel.onclick = () => {
 }
 
 deleteCommit.onclick = async () => {
-    await deleteTrack(deleteCommit['data-date'], deleteCommit['data-type']).then(location.reload())
+    await deleteTrack(deleteCommit['data-date'], deleteCommit['data-type'])
+    location.reload()
 }

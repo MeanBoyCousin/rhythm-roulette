@@ -30,7 +30,7 @@ body {
     transition: 200ms cubic-bezier(.4, 0, .2, 1);
 }
 
-#modal-container {
+#delete-modal-container {
     background-color: white;
     padding: 2.5%;
     border-radius: 3px;
@@ -38,13 +38,13 @@ body {
     border-radius: 3px;
 }
 
-#modal-text {
+#delete-modal-text {
     font-family: 'lato', Arial, Helvetica, sans-serif;
     text-align: center;
     padding: 2.5%;
 }
 
-#modal-buttons {
+#delete-modal-buttons {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
@@ -87,6 +87,99 @@ body {
 
 #delete-commit:active,
 #delete-cancel:active {
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
+}
+
+#upload-modal {
+    position: fixed;
+    display: none;
+    opacity: 0;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    height: 100vh;
+    min-width: 95%;
+    z-index: 10;
+    padding: 2.5%;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: 200ms cubic-bezier(.4, 0, .2, 1);
+}
+
+#upload-modal-container {
+    background-color: white;
+    padding: 2.5%;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 3px;
+}
+
+#upload-modal-text {
+    font-family: 'lato', Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 2.5%;
+
+}
+
+#upload-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#upload-link {
+    text-align: center;
+    width: 90%;
+    margin-bottom: 1.75%;
+    box-sizing: border-box;
+}
+
+#upload-link:focus {
+    outline-color: #cf204b;
+}
+
+#upload-modal-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+#upload-cancel,
+#upload-commit {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+    font-family: 'Inconsolata', monospace;
+    border-radius: 3px;
+    padding: 0.25rem 1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 200ms cubic-bezier(.4, 0, .2, 1);
+    user-select: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    border: none;
+    font-size: 1rem;
+    min-width: 128px;
+    margin: 2.5% 0;
+}
+
+#upload-cancel {
+    background-color: #fff;
+}
+
+#upload-cancel:active {
+    background-color: #ccc;
+}
+
+#upload-commit {
+    background-color: #cf204b;
+    color: white;
+}
+
+#upload-commit:active {
+    background-color: #970024;
+}
+
+#upload-commit:active,
+#upload-cancel:active {
     box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
 }
 
@@ -151,19 +244,39 @@ p {
     height: 1.15rem;
 }
 
-.likes-view-container {
+.upload-view-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-top: 1.25%;
 }
 
-.like-container {
-    display: flex;
-    align-items: center;
+.upload-button {
+    border-radius: 50%;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    vertical-align: middle;
+    padding: 0;
+    height: 2rem;
+    width: 2rem;
+    min-width: 2rem;
+    text-align: center;
+    cursor: pointer;
+    background-color: rgba(204, 204, 204, 0);
+    transition: 200ms cubic-bezier(.4, 0, .2, 1);
 }
 
-.like-flame {
+.upload-button:hover {
+    background-color: rgba(204, 204, 204, 0.2);
+}
+
+.upload-button:active {
+    background-color: rgba(204, 204, 204, 0.4);
+}
+
+.upload-track-icon {
     color: #cf204b;
     font-size: 1.5625rem;
     cursor: pointer;
@@ -172,14 +285,8 @@ p {
     -webkit-tap-highlight-color: transparent;
 }
 
-.like-flame:active {
+.upload-track-icon:active {
     color: #970024;
-}
-
-.like-count {
-    font-family: 'Inconsolata', monospace;
-    font-size: 1.15rem;
-    padding-left: 10%;
 }
 
 .view-spin-btn {

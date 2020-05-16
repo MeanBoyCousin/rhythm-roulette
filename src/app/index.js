@@ -13,6 +13,7 @@ app.use(express.static(path.join(__dirname, '/assets')))
 
 const home = require('./routes/home')
 const myUploads = require('./routes/user/myUploads')
+const mySaves = require('./routes/user/mySaves')
 
 const spin = require('./routes/spin/spin')
 const previousSpin = require('./routes/spin/getPreviousSpin') // Used to fetch a previous spin when release IDs are known.
@@ -23,14 +24,14 @@ const upload = require('./routes/upload/upload') // Used to upload a track made 
 const uploaded = require('./routes/upload/getUploaded') // Used to fetch users uploaded songs.
 
 app.use('/', home)
-app.use('/user', myUploads)
+app.use('/user', [myUploads, mySaves])
 app.use('/api', [spin, previousSpin])
 app.use('/api/save', [saveSpin, savedSpins])
 app.use('/api/upload', [upload, uploaded])
 app.use('/api/delete', deleteSpin)
 
 app.get('*', (req, res) => {
-    res.send('404')
+    res.sendStatus('404')
 });
 
 app.listen(process.env.port || 3000)

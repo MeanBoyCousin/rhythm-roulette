@@ -40,7 +40,7 @@ const buildTracks = (data) => {
         topInfo.appendChild(divider)
         const modeImg = document.createElement('img')
         modeImg.classList.add('mode-img')
-        modeImg.src = `/myUploads/imgs/${track.mode}_Red.png`
+        modeImg.src = `/imgs/${track.mode}_Red.png`
         modeImg.title = `${track.mode} Mode`
         topInfo.appendChild(modeImg)
         trackContainer.appendChild(topInfo)

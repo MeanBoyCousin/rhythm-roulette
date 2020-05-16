@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/fonts/stylesheet.css">
+    <link rel="stylesheet" href="/mySaves/mySaves.css">
+    <link rel="stylesheet" href="/mySaves/carousel.css">
+    <title>My Saves</title>
+</head>
+
+<body>
+
+    <div id="container">
+
+        <div id="delete-modal">
+            <div id="delete-modal-container">
+                <div id="delete-modal-text">
+                    <p>Are you sure you wish to delete this track? Once it has been deleted, it will <strong>no longer be available</strong> in your saved spins.</p>
+                </div>
+                <div id="delete-modal-buttons">
+                    <button id="delete-cancel">cancel</button>
+                    <button id="delete-commit">delete track</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="upload-modal">
+            <div id="upload-modal-container">
+                <div id="upload-modal-text">
+                    <p>Please enter the embed code for your track in the box below. You can find this by visiting your track on Soundcloud and clicking the share button below the track. Next, click embed and then copy & paste everything in the box labelled code.</p>
+                </div>
+                <div id="upload-container">
+                    <input id="upload-link" type="text" placeholder="Paste your Soundcloud embed link here...">
+                </div>
+                <div id="upload-modal-buttons">
+                    <button id="upload-cancel">cancel</button>
+                    <button id="upload-commit">upload track</button>
+                </div>
+            </div>
+        </div>
+
+        <h1>Saved Spins</h1>
+
+    </div>
+
+    <script src="https://momentjs.com/downloads/moment-with-locales.js" defer></script>
+    <script src="/materialize.js" defer></script>
+    <script type="module" src="/mySaves/mySavesFront.js" defer></script>
+</body>
+
+</html>
