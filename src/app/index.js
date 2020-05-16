@@ -17,6 +17,7 @@ const mySaves = require('./routes/user/mySaves')
 
 const spin = require('./routes/spin/spin')
 const previousSpin = require('./routes/spin/getPreviousSpin') // Used to fetch a previous spin when release IDs are known.
+const getDBTotals = require('./routes/spin/getDBTotals') // Used to get info from DB such as total releases, total genres, etc.
 const saveSpin = require('./routes/save/saveSpin') // Put request to update saved spins.
 const savedSpins = require('./routes/save/getSavedSpins') // Used to fetch users saved spins.
 const deleteSpin = require('./routes/deleteSpin') // Used to delete a saved or uploaded spin.
@@ -25,7 +26,7 @@ const uploaded = require('./routes/upload/getUploaded') // Used to fetch users u
 
 app.use('/', home)
 app.use('/user', [myUploads, mySaves])
-app.use('/api', [spin, previousSpin])
+app.use('/api', [spin, previousSpin, getDBTotals])
 app.use('/api/save', [saveSpin, savedSpins])
 app.use('/api/upload', [upload, uploaded])
 app.use('/api/delete', deleteSpin)
