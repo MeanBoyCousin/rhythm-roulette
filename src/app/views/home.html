@@ -1,65 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        <link rel="stylesheet" href="/fonts/stylesheet.css" />
+        <link rel="stylesheet" href="/home/home.css" />
+        <link rel="stylesheet" href="/animate.css" />
+        <title>Rhythm Roulette</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="/fonts/stylesheet.css">
-    <link rel="stylesheet" href="/home/home.css">
-    <link rel="stylesheet" href="/animate.css">
-    <title>Rhythm Roulette</title>
-</head>
+    <body>
+        <div id="container">
+            <div id="sign-container" class="animated fadeInDown">
+                <button id="sign-in">Sign In</button>
+                <button id="sign-up">Sign Up</button>
+            </div>
 
-<body>
+            <div id="spin-container" class="animated fadeIn delay-1s">
+                <h1>Spin the wheel, make music!</h1>
+                <!-- <h3>
+                    Hit classic spin to go truly blindfolded and get three completely random releases. If you want a
+                    little more control, or want to try hard mode, go for a custom spin.
+                </h3> -->
+                <button>
+                    <a href="/api/spin?pretty&m=3">Classic Spin</a>
+                </button>
+                <button>Custom Spin</button>
+            </div>
 
-    <div id="container">
+            <div id="database-counter-container">
+                <div class="counter-container animated hidden">
+                    <h1 id="total-releases">0</h1>
+                    <p>songs to sample</p>
+                </div>
+                <div class="counter-container animated hidden">
+                    <h1 id="total-genres">0</h1>
+                    <p>releases to spin</p>
+                </div>
+                <div class="counter-container animated hidden">
+                    <h1 id="total-styles">0</h1>
+                    <p>musical styles</p>
+                </div>
+                <div class="counter-container animated hidden">
+                    <h1 id="total-years">0</h1>
+                    <p>years of music</p>
+                </div>
+            </div>
 
-        <div id="sign-container" class="animated fadeInDown">
-            <a id="sign-in">Sign In</a>
-            <a id="sign-up">Sign Up</a>
+            <!-- Add in feature of the day! -->
+            <div id="featured-track" class="animated delay-1s hidden">
+                <h2>Feature of the day</h2>
+            </div>
+
+            <footer class="animated fadeInUp delay-half-s">
+                <div class="icon-container">
+                    <a class="material-icons">publish</a>
+                    <small>uploads</small>
+                </div>
+                <div class="icon-container">
+                    <a class="material-icons">save</a>
+                    <small>saves</small>
+                </div>
+                <div class="icon-container">
+                    <a id="spin-home" class="material-icons active-icon">album</a>
+                    <small>home</small>
+                </div>
+                <div class="icon-container">
+                    <a class="material-icons">search</a>
+                    <small>search</small>
+                </div>
+                <div class="icon-container">
+                    <a class="material-icons">help_outline</a>
+                    <small>help</small>
+                </div>
+            </footer>
         </div>
 
-        <div id="spin-container" class="animated fadeIn delay-1s">
-            <h1>Spin the wheel, make some music!</h1>
-            <h3>Hit classic spin to go truly blindfolded and get three completely random releases. If you want a little more control, or want to try hard mode, go for a custom spin.</h3>
-            <a href="/api/spin?pretty&m=3">Classic Spin</a>
-            <a>Custom Spin</a>
-        </div>
-
-        <div id="database-counter-container">
-            <div class="counter-container animated hidden">
-                <h1 id="total-releases">0</h1>
-                <p>releases to spin</p>
-            </div>
-            <div class="counter-container animated hidden">
-                <h1 id="total-genres">0</h1>
-                <p>musical genres</p>
-            </div>
-            <div class="counter-container animated hidden">
-                <h1 id="total-styles">0</h1>
-                <p>musical styles</p>
-            </div>
-            <div class="counter-container animated hidden">
-                <h1 id="total-years">0</h1>
-                <p>years of music</p>
-            </div>
-        </div>
-
-        <!-- Add in feature of the day! -->
-
-        <footer class="animated fadeInUp delay-half-s">
-            <!-- Change this footer to be a app style nav bar. -->
-            <div id="discogs">
-                <p>Powered by</p>
-                <img src="/imgs/discogs_logo.svg">
-            </div>
-            <a>FAQs</a>
-        </footer>
-
-    </div>
-
-    <script type="module" src="/home/homeFront.js" defer></script>
-</body>
-
+        <script type="module" src="/home/homeFront.js" defer></script>
+    </body>
 </html>
