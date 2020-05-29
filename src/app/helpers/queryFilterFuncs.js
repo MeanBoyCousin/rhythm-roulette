@@ -1,25 +1,17 @@
-const filterYearRange = ({
-    data,
-    params
-}) => {
+const filterYearRange = ({ data, params }) => {
     return {
         data: data.filter(release => {
-            if (params.lowerYear === undefined) {
-                return release.year <= params.upperYear
-            } else if (params.upperYear === undefined) {
-                return release.year >= params.lowerYear
-            } else {
-                return release.year >= params.lowerYear && release.year <= params.upperYear
-            }
+            return params.lowerYear === undefined
+                ? release.year <= params.upperYear
+                : params.upperYear === undefined
+                ? release.year >= params.lowerYear
+                : release.year >= params.lowerYear && release.year <= params.upperYear
         }),
         params: params
     }
 }
 
-const filterInclusiveGenres = ({
-    data,
-    params
-}) => {
+const filterInclusiveGenres = ({ data, params }) => {
     if (params.incGenres === undefined) {
         return {
             data: data,
@@ -36,10 +28,7 @@ const filterInclusiveGenres = ({
     }
 }
 
-const removeExcludedGenres = ({
-    data,
-    params
-}) => {
+const removeExcludedGenres = ({ data, params }) => {
     if (params.excGenres === undefined) {
         return {
             data: data,
@@ -56,10 +45,7 @@ const removeExcludedGenres = ({
     }
 }
 
-const removeExcludedStyles = ({
-    data,
-    params
-}) => {
+const removeExcludedStyles = ({ data, params }) => {
     if (params.excUndefStyles === 'true' && params.excStyles !== undefined) params.excStyles.push('undefined')
     if (params.excUndefStyles === 'true' && params.excStyles === undefined) params.excStyles = ['undefined']
     if (params.excStyles === undefined) {
@@ -78,10 +64,7 @@ const removeExcludedStyles = ({
     }
 }
 
-const amountOfVideos = ({
-    data,
-    params
-}) => {
+const amountOfVideos = ({ data, params }) => {
     if (params.videos === undefined) {
         return {
             data: data,

@@ -5,9 +5,7 @@ const database = require('../helpers/databaseAccess')
 const currentUser = require('../helpers/currentUser')
 
 router.delete('/', bodyParser.json(), async (req, res) => {
-
     try {
-
         const spinToDelete = req.body.date
 
         const db = await database.open(process.env.DB_PATH)
@@ -23,15 +21,11 @@ router.delete('/', bodyParser.json(), async (req, res) => {
         await database.close(db)
 
         res.sendStatus(200)
-
     } catch (error) {
-
         res.sendStatus(500)
 
         console.log(error)
-
     }
-
 })
 
 module.exports = router

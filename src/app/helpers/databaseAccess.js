@@ -1,9 +1,7 @@
 const sqlite3 = require('sqlite3').verbose()
-const {
-    open
-} = require('sqlite')
+const { open } = require('sqlite')
 
-const openDB = async (path) => {
+const openDB = async path => {
     const db = await open({
         filename: path,
         driver: sqlite3.Database
@@ -11,7 +9,7 @@ const openDB = async (path) => {
     return db
 }
 
-const closeDB = async (db) => {
+const closeDB = async db => {
     await db.close()
 }
 

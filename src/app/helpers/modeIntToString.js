@@ -1,13 +1,11 @@
 const modeIntToString = req => {
-    if (req.query.ids.split(',').length === 1) {
-        return 'Hard'
-    } else if (req.query.ids.split(',').length === 3) {
-        return 'Normal'
-    } else if (req.query.ids.split(',').length === 5) {
-        return 'Easy'
-    } else {
-        return 'Unknown Mode'
-    }
+    return req.query.ids.split(',').length === 1
+        ? 'Hard'
+        : req.query.ids.split(',').length === 3
+        ? 'Normal'
+        : req.query.ids.split(',').length === 5
+        ? 'Easy'
+        : 'Unknown Mode'
 }
 
 module.exports = modeIntToString

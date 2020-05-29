@@ -6,12 +6,12 @@ const fetchAllData = require('../../helpers/fetchAllData')
 const getReleases = require('../../helpers/getReleasesFromIDs')
 
 router.get('/savedspins', async (req, res) => {
-
     try {
-
         const db = await database.open(process.env.DB_PATH)
 
-        let savedSpins = await db.get(`SELECT saved FROM users WHERE user_id = '${currentUser}';`).then(spins => JSON.parse(spins.saved))
+        let savedSpins = await db
+            .get(`SELECT saved FROM users WHERE user_id = '${currentUser}';`)
+            .then(spins => JSON.parse(spins.saved))
 
         await database.close(db)
 
@@ -22,17 +22,13 @@ router.get('/savedspins', async (req, res) => {
         })
 
         res.json(savedSpins)
-
     } catch (error) {
-
         res.json({
-            message: "An error occurred!"
+            message: 'An error occurred!'
         })
 
         console.log(error)
-
     }
-
 })
 
 module.exports = router

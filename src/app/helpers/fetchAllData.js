@@ -1,7 +1,6 @@
 const database = require('./databaseAccess')
 
 const fetchAllData = async () => {
-
     const db = await database.open(process.env.DB_PATH)
 
     const data = await db.all(`SELECT * FROM releases;`)

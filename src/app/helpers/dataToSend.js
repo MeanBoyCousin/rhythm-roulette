@@ -2,7 +2,6 @@ const queryFilters = require('./queryFilterFuncs')
 const R = require('ramda')
 
 const dataToSend = (data, params) => {
-
     const args = {
         data: data,
         params: params
@@ -14,17 +13,13 @@ const dataToSend = (data, params) => {
         queryFilters.excGenres,
         queryFilters.excStyles,
         queryFilters.videos
-    )
+    )(args).data
 
-    data = filterData(args).data
+    const length = filterData.length
 
-    let results = [];
-
-    const length = data.length
-
-    for (let i = 0; i < params.mode; i++) {
-        results.push(data[Math.floor(Math.random() * length)])
-    }
+    const results = [...Array(parseFloat(params.mode))].map(() => {
+        return filterData[Math.floor(Math.random() * length)]
+    })
 
     results.push(length)
 
