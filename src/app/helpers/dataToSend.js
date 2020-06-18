@@ -11,7 +11,6 @@ const dataToSend = (data, params) => {
         queryFilters.years,
         queryFilters.incGenres,
         queryFilters.excGenres,
-        queryFilters.excStyles,
         queryFilters.videos
     )(args).data
 

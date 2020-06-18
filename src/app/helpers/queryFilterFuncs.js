@@ -45,25 +45,6 @@ const removeExcludedGenres = ({ data, params }) => {
     }
 }
 
-const removeExcludedStyles = ({ data, params }) => {
-    if (params.excUndefStyles === 'true' && params.excStyles !== undefined) params.excStyles.push('undefined')
-    if (params.excUndefStyles === 'true' && params.excStyles === undefined) params.excStyles = ['undefined']
-    if (params.excStyles === undefined) {
-        return {
-            data: data,
-            params: params
-        }
-    } else {
-        return {
-            data: data.filter(release => {
-                const matcherMap = params.excStyles.map(style => release.styles.toLowerCase().includes(style))
-                return matcherMap.every(bool => bool === false)
-            }),
-            params: params
-        }
-    }
-}
-
 const amountOfVideos = ({ data, params }) => {
     if (params.videos === undefined) {
         return {
@@ -84,6 +65,5 @@ module.exports = {
     years: filterYearRange,
     incGenres: filterInclusiveGenres,
     excGenres: removeExcludedGenres,
-    excStyles: removeExcludedStyles,
     videos: amountOfVideos
 }
