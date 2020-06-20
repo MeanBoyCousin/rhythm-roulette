@@ -16,11 +16,11 @@ router.get('/spin', async (req, res) => {
                 ? parseFloat(req.query.u)
                 : new Date().getFullYear(),
         incGenres:
-            req.query.ig !== 'all' && req.query.ig !== undefined
+            req.query.ig !== '' && req.query.ig !== undefined
                 ? req.query.ig.split(',')
                 : undefined,
         excGenres:
-            req.query.eg !== 'none' && req.query.eg !== undefined
+            req.query.eg !== '' && req.query.eg !== undefined
                 ? req.query.eg.split(',')
                 : undefined,
         mode:

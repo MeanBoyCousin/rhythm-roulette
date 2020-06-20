@@ -1,7 +1,0 @@
-Every Genre is present - 15 in total.
-
-Missing Styles: {
-    Folk: [Cobla, Filk],
-    Hip Hop: [Motswako, Spaza, Bongo Flava],
-    Reggae: [Azonto]
-}
